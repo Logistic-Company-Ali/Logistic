@@ -14,19 +14,19 @@ public class TransportCompany {
     @Column(name = "id")
     private Long id;
     @Column(name = "short_name")
-    private Long shortName;
+    private String shortName;
     @Column(name = "full_name")
-    private Long fullName;
+    private String fullName;
     @Column(name = "email")
-    private Long email;
+    private String email;
     @Column(name = "phone")
-    private Long phone;
+    private String phone;
     @Column(name = "inn")
-    private Long inn;
+    private String inn;
     @Column(name = "kpp")
-    private Long kpp;
+    private String kpp;
     @Column(name = "fio_ruk")
-    private Long fioRuk;
+    private String fioRuk;
     @Column(name = "adress")
-    private Long adress;
+    private String adress;
 }
