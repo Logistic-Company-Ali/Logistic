@@ -22,6 +22,6 @@ public class TruckType {
     @Column(name = "tariff_by_hour")
     private Integer tariffByHour;
     @OneToMany(mappedBy = "truckType")
-    private List<TruckType> truckTypes;
+    private List<Truck> trucks;
 
 }
