@@ -13,10 +13,12 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-    @Column(name = "client_id")
-    private Long clientId;
-    @Column(name = "truck_id")
-    private Long truckId;
+    @ManyToOne
+    @JoinColumn(name = "client_id")
+    private Client client;
+    @ManyToOne
+    @JoinColumn(name = "truck_id")
+    private Truck truck;
     @Column(name = "cargo")
     private String cargo;
     @Column(name = "cargo_weight")

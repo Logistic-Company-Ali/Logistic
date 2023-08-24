@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Table(name = "truck_types")
 @NoArgsConstructor
@@ -19,5 +21,7 @@ public class TruckType {
     private Integer tariffByKm;
     @Column(name = "tariff_by_hour")
     private Integer tariffByHour;
+    @OneToMany(mappedBy = "truckType")
+    private List<TruckType> truckTypes;
 
 }

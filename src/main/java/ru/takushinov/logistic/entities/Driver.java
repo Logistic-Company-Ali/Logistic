@@ -19,5 +19,8 @@ public class Driver {
     private String name;
     @Column(name = "patronymic")
     private String patronymic;
+    @OneToOne
+    @JoinColumn(name = "truck_id")
+    private Truck truck;
 
 }

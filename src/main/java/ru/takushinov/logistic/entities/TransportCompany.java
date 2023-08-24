@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Table(name = "transport_company")
 @NoArgsConstructor
@@ -27,6 +29,8 @@ public class TransportCompany {
     private String kpp;
     @Column(name = "fio_ruk")
     private String fioRuk;
-    @Column(name = "adress")
-    private String adress;
+    @Column(name = "address")
+    private String address;
+    @OneToMany(mappedBy = "transportCompany")
+    private List<Truck> trucks;
 }

@@ -3,6 +3,9 @@ package ru.takushinov.logistic.entities;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.aspectj.weaver.ast.Or;
+
+import java.util.List;
 
 @Entity
 @Table(name = "trucks")
@@ -25,5 +28,15 @@ public class Truck {
     private Integer height;
     @Column(name = "width")
     private Integer width;
+    @ManyToOne
+    @JoinColumn(name = "transport_company_id")
+    private TransportCompany transportCompany;
+    @ManyToOne
+    @JoinColumn(name = "truck_types_id")
+    private TruckType truckType;
+    @OneToMany(mappedBy = "truck")
+    private List<Order> orders;
+    @OneToOne(mappedBy = "truck")
+    private Driver driver;
 
 }
