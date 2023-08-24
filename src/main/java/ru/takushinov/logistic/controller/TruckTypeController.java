@@ -17,7 +17,7 @@ public class TruckTypeController {
     private final TruckTypeMapper truckTypeMapper;
 
     @GetMapping()
-    public List<TruckTypeDto> getAllTruckTypes() {
+    public List<TruckTypeDto> getAll() {
         return truckTypeMapper.entityToDto(truckTypeService.getAll());
     }
     @GetMapping("/{truckTypeName}")
@@ -27,7 +27,7 @@ public class TruckTypeController {
     }
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @PostMapping
-    public TruckTypeDto saveTruckType(@RequestBody TruckTypeDto truckTypeDto) {
+    public TruckTypeDto save(@RequestBody TruckTypeDto truckTypeDto) {
         return truckTypeMapper.entityToDto(truckTypeService.save(truckTypeMapper.dtoToEntity(truckTypeDto)));
     }
 }
