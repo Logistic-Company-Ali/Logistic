@@ -35,15 +35,7 @@ public class Truck {
     private TruckType truckType;
     @OneToMany(mappedBy = "truck")
     private List<Order> orders;
-//    @OneToOne(mappedBy = "truck")
-//    private Driver driver;
-
-    @ManyToMany
-    @JoinTable(
-            name="car_driver",
-            joinColumns = @JoinColumn(name = "truck_id"),
-            inverseJoinColumns = @JoinColumn(name="driver_id")
-    )
-    private List<Driver> drivers;
+    @OneToOne(mappedBy = "truck")
+    private Driver driver;
 
 }

@@ -21,16 +21,8 @@ public class Driver {
     private String name;
     @Column(name = "patronymic")
     private String patronymic;
-//    @OneToOne
-//    @JoinColumn(name = "truck_id")
-//    private Truck truck;
-
-    @ManyToMany
-    @JoinTable(
-            name="car_driver",
-            joinColumns = @JoinColumn(name = "driver_id"),
-            inverseJoinColumns = @JoinColumn(name="truck_id")
-    )
-    private List<Truck> trucks;
+    @OneToOne
+    @JoinColumn(name = "truck_id")
+    private Truck truck;
 
 }
