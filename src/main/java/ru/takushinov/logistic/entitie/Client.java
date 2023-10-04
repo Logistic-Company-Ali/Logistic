@@ -1,9 +1,9 @@
 package ru.takushinov.logistic.entitie;
 
-import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
