@@ -1,6 +1,7 @@
 package ru.takushinov.logistic.mapper;
 
 import org.mapstruct.Mapper;
+import org.springframework.stereotype.Component;
 import ru.takushinov.logistic.dto.UserDto;
 import ru.takushinov.logistic.entitie.User;
 
