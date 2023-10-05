@@ -101,20 +101,33 @@ CREATE TABLE roles
     role varchar(50)
 );
 INSERT INTO roles (role) VALUES
-                ('Администратор'),
-                ('Оператор');
+                ('ROLE_ADMIN'),
+                ('ROLE_OPER'),
+                ('ROLE_USER');
 
 
 CREATE TABLE users
 (
     id bigserial primary key,
     lastname varchar(50),
-    login varchar(50),
+    username varchar(50),
     name varchar(50),
-    password varchar(50),
+    password varchar(80),
     patronymic varchar(50),
-    role_id bigint REFERENCES roles (id)
+    email varchar(50)
 );
-INSERT INTO users (lastname, login, name, password, patronymic, role_id) VALUES
-                   ('FIO_ADMIN', 'admin', 'IMIA_ADMIN', ' ', 'OTCHESTVO_ADMIN', 1),
-                   ('FIO_OPER', 'oper', 'IMIA_ADMIN', ' ', 'OTCHESTVO_OPER', 2);
+INSERT INTO users (lastname, username, name, password, patronymic, email) VALUES
+                   ('FIO_ADMIN', 'admin', 'IMIA_ADMIN', '$2a$04$Fx/SX9.BAvtPlMyIIqqFx.hLY2Xp8nnhpzvEEVINvVpwIPbA3v/.i', 'OTCHESTVO_ADMIN', 'admin@mail'),
+                   ('FIO_OPER', 'oper', 'IMIA_ADMIN', '$2a$04$Fx/SX9.BAvtPlMyIIqqFx.hLY2Xp8nnhpzvEEVINvVpwIPbA3v/.i', 'OTCHESTVO_OPER', 'oper@mail');
+
+CREATE TABLE users_roles
+(
+    user_id    bigint not null references users (id),
+    role_id    bigint not null references roles (id),
+    created_at timestamp default current_timestamp,
+    updated_at timestamp default current_timestamp,
+    primary key (user_id, role_id)
+);
+INSERT INTO users_roles (user_id, role_id)
+VALUES (1, 1),
+       (2, 2);
