@@ -9,6 +9,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -23,6 +24,7 @@ import ru.takushinov.logistic.util.JwtRequestFilter;
 
 @Configuration
 @RequiredArgsConstructor
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig {
     private final UserService userService;
 
@@ -39,13 +41,7 @@ public class SecurityConfig {
                 .csrf()
                 .disable()
                 .authorizeHttpRequests()
-//                .requestMatchers(HttpMethod.POST, "/api/v1/users/**").hasRole("SUPERADMIN")
-//                .requestMatchers(HttpMethod.PUT, "/api/v1/users/**").hasRole("SUPERADMIN")
-//                .requestMatchers(HttpMethod.DELETE, "/api/v1/users/**").hasRole("SUPERADMIN")
-//                .requestMatchers(HttpMethod.GET, "/api/v1/users/**").hasAnyRole("ADMIN", "SUPERADMIN")
-//                .requestMatchers( HttpMethod.POST, "/api/v1/products/**").hasRole("ADMIN")
-//                .requestMatchers( HttpMethod.PUT, "/api/v1/products/**").hasRole("ADMIN")
-                .requestMatchers( HttpMethod.POST, "/api/v1/users/**").hasRole("ADMIN")
+         //       .requestMatchers( HttpMethod.POST, "/api/v1/users/**").hasRole("ADMIN")
                 .anyRequest().permitAll()
                 .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
