@@ -5,6 +5,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
@@ -51,7 +52,13 @@ public class JwtTokenUtil {
         return getAllClaimsFromToken(token).getSubject();
     }
 
-    public List<String> getRoles(String token) {
-        return getAllClaimsFromToken(token).get("roles", List.class);
+    public List<GrantedAuthority> getRoles(String token) {
+        List<String> authority = (List<String>) getAllClaimsFromToken(token).get("roles", List.class);
+
+        return authority.stream()
+                .map(SimpleGrantedAuthority::new)
+                .map(it -> (GrantedAuthority) it)
+                .toList();
+
     }
 }
