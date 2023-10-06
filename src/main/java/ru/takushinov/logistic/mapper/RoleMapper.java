@@ -8,7 +8,7 @@ import ru.takushinov.logistic.entitie.Role;
 
 import java.util.List;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface RoleMapper {
     Role dtoToEntity(RoleDto roleDto);
     RoleDto entityToDto(Role role);

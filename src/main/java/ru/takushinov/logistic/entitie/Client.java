@@ -1,14 +1,15 @@
 package ru.takushinov.logistic.entitie;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
 @Table(name = "clients")
 @NoArgsConstructor
+@AllArgsConstructor
 @Data
 public class Client {
     @Id

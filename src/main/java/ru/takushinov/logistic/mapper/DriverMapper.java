@@ -6,7 +6,7 @@ import ru.takushinov.logistic.entitie.Driver;
 
 import java.util.List;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface DriverMapper {
     Driver dtoToEntity(DriverDto driverDto);
     DriverDto entityToDto(Driver driver);

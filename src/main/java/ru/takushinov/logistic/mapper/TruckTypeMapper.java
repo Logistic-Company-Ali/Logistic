@@ -8,7 +8,7 @@ import ru.takushinov.logistic.entitie.User;
 
 import java.util.List;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface TruckTypeMapper {
     TruckType dtoToEntity(TruckTypeDto truckTypeDto);
     TruckTypeDto entityToDto(TruckType truckType);

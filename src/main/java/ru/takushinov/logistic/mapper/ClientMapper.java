@@ -7,7 +7,7 @@ import ru.takushinov.logistic.entitie.Client;
 import ru.takushinov.logistic.entitie.User;
 
 import java.util.List;
-@Mapper
+@Mapper(componentModel = "spring")
 public interface ClientMapper {
     Client dtoToEntity(ClientDto clientDto);
     ClientDto entityToDto(Client client);
