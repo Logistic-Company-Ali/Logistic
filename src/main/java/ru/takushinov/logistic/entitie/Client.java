@@ -1,5 +1,6 @@
 package ru.takushinov.logistic.entitie;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -9,6 +10,7 @@ import java.util.List;
 @Entity
 @Table(name = "clients")
 @NoArgsConstructor
+@AllArgsConstructor
 @Data
 public class Client {
     @Id

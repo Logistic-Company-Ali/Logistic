@@ -118,7 +118,7 @@ CREATE TABLE users
 );
 INSERT INTO users (lastname, username, name, password, patronymic, email) VALUES
                    ('FIO_ADMIN', 'admin', 'IMIA_ADMIN', '$2a$04$Fx/SX9.BAvtPlMyIIqqFx.hLY2Xp8nnhpzvEEVINvVpwIPbA3v/.i', 'OTCHESTVO_ADMIN', 'admin@mail'),
-                   ('FIO_OPER', 'oper', 'IMIA_ADMIN', '$2a$04$Fx/SX9.BAvtPlMyIIqqFx.hLY2Xp8nnhpzvEEVINvVpwIPbA3v/.i', 'OTCHESTVO_OPER', 'oper@mail');
+                   ('FIO_OPER', 'oper', 'IMIA_OPER', '$2a$04$Fx/SX9.BAvtPlMyIIqqFx.hLY2Xp8nnhpzvEEVINvVpwIPbA3v/.i', 'OTCHESTVO_OPER', 'oper@mail');
 
 CREATE TABLE users_roles
 (

@@ -1,14 +1,15 @@
 package ru.takushinov.logistic.entitie;
 
 import javax.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+
+import lombok.*;
 
 import java.util.Collection;
 
 @Entity
 @Table(name = "users")
 @NoArgsConstructor
+@AllArgsConstructor
 @Data
 public class User {
     @Id

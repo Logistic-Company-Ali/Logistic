@@ -6,7 +6,7 @@ import ru.takushinov.logistic.entitie.TransportCompany;
 
 import java.util.List;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface TransportCompanyMapper {
     TransportCompany dtoToEntity(TransportCompanyDto transportCompanyDtoDto);
     TransportCompanyDto entityToDto(TransportCompany transportCompanyDto);
