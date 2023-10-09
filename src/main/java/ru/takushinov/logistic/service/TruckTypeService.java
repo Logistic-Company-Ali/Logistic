@@ -19,7 +19,7 @@ public class TruckTypeService {
     }
 
     public TruckType getTruckTypeByName(String truckTypeName) {
-        return truckTypeRepository.findByTruckType(truckTypeName).get();
+        return truckTypeRepository.findByType(truckTypeName).get();
     }
 
     public TruckType save(TruckType truckType) {

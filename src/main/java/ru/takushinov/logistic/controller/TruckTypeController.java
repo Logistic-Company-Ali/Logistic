@@ -10,7 +10,7 @@ import ru.takushinov.logistic.service.TruckTypeService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/trucktype")
+@RequestMapping("/api/v1/trucktypes")
 @RequiredArgsConstructor
 public class TruckTypeController {
     private final TruckTypeService truckTypeService;
