@@ -14,7 +14,7 @@ public class TruckTypeService {
         this.truckTypeRepository = truckTypeRepository;
     }
 
-    public List<TruckType> getAllTruckTypes() {
+    public List<TruckType> getAll() {
         return truckTypeRepository.findAll();
     }
 

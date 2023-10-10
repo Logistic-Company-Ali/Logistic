@@ -18,7 +18,7 @@ public class UserController {
 
     @GetMapping()
     public List<UserDto> getAllUsers() {
-        return userMapper.entityToDto(userService.getAllUsers());
+        return userMapper.entityToDto(userService.getAll());
     }
     @GetMapping("/{username}")
     public UserDto getUserByUsername(@PathVariable String username) {
