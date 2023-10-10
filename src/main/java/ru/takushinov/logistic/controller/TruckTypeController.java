@@ -18,7 +18,7 @@ public class TruckTypeController {
 
     @GetMapping()
     public List<TruckTypeDto> getAllTruckTypes() {
-        return truckTypeMapper.entityToDto(truckTypeService.getAllTruckTypes());
+        return truckTypeMapper.entityToDto(truckTypeService.getAll());
     }
     @GetMapping("/{truckTypeName}")
     public TruckTypeDto getTruckTypeByName(@PathVariable String truckTypeName) {

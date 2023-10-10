@@ -45,7 +45,7 @@ public class UserService implements UserDetailsService {
         userRepository.save(user);
     }
 
-    public List<User> getAllUsers() {
+    public List<User> getAll() {
         return userRepository.findAll();
     }
 
