@@ -8,31 +8,31 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ru.takushinov.logistic.dto.TruckDto;
-import ru.takushinov.logistic.mapper.TruckMapper;
-import ru.takushinov.logistic.service.TruckService;
+import ru.takushinov.logistic.dto.DriverDto;
+import ru.takushinov.logistic.mapper.DriverMapper;
+import ru.takushinov.logistic.service.DriverService;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/trucks")
+@RequestMapping("/api/v1/drivers")
 @RequiredArgsConstructor
-public class TruckController {
-    private final TruckService truckService;
-    private final TruckMapper truckMapper;
+public class DriverController {
+    private final DriverService driverService;
+    private final DriverMapper driverMapper;
     @PreAuthorize("hasAuthority('ROLE_OPER') or hasAuthority('ROLE_ADMIN')")
     @GetMapping()
-    public List<TruckDto> getAll() {
-        return truckMapper.entityToDto(truckService.getAll());
+    public List<DriverDto> getAll() {
+        return driverMapper.entityToDto(driverService.getAll());
     }
     @PreAuthorize("hasAuthority('ROLE_OPER') or hasAuthority('ROLE_ADMIN')")
     @GetMapping("/{id}")
-    public TruckDto getTruckByName(@PathVariable Long id) {
-        return truckMapper.entityToDto(truckService.getTruckById(id));
+    public DriverDto getDriverById(@PathVariable Long id) {
+        return driverMapper.entityToDto(driverService.getDriverById(id));
     }
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @PostMapping
-    public TruckDto save(@RequestBody TruckDto truckDto) {
-        return truckMapper.entityToDto(truckService.save(truckMapper.dtoToEntity(truckDto)));
+    public DriverDto save(@RequestBody DriverDto DriverDto) {
+        return driverMapper.entityToDto(driverService.save(driverMapper.dtoToEntity(DriverDto)));
     }
 }
