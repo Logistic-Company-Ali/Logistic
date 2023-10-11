@@ -8,31 +8,31 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ru.takushinov.logistic.dto.UserDto;
-import ru.takushinov.logistic.mapper.UserMapper;
-import ru.takushinov.logistic.service.UserService;
+import ru.takushinov.logistic.dto.TruckDto;
+import ru.takushinov.logistic.mapper.TruckMapper;
+import ru.takushinov.logistic.service.TruckService;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/users")
+@RequestMapping("/api/v1/trucks")
 @RequiredArgsConstructor
-public class UserController {
-    private final UserService userService;
-    private final UserMapper userMapper;
+public class TruckController {
+    private final TruckService truckService;
+    private final TruckMapper truckMapper;
     @PreAuthorize("hasAuthority('ROLE_OPER') or hasAuthority('ROLE_ADMIN')")
     @GetMapping()
-    public List<UserDto> getAll() {
-        return userMapper.entityToDto(userService.getAll());
+    public List<TruckDto> getAll() {
+        return truckMapper.entityToDto(truckService.getAll());
     }
     @PreAuthorize("hasAuthority('ROLE_OPER') or hasAuthority('ROLE_ADMIN')")
-    @GetMapping("/{username}")
-    public UserDto getUserByUsername(@PathVariable String username) {
-        return userMapper.entityToDto(userService.getUserByUsername(username));
+    @GetMapping("/{id}")
+    public TruckDto getTruckByName(@PathVariable Long id) {
+        return truckMapper.entityToDto(truckService.getTruckById(id));
     }
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @PostMapping
-    public UserDto save(@RequestBody UserDto userDto) {
-       return userMapper.entityToDto(userService.save(userMapper.dtoToEntity(userDto)));
+    public TruckDto save(@RequestBody TruckDto truckDto) {
+        return truckMapper.entityToDto(truckService.save(truckMapper.dtoToEntity(truckDto)));
     }
 }

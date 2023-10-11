@@ -14,8 +14,8 @@ public interface ClientMapper {
     Client dtoToEntity(ClientDto clientDto);
     @Mapping(target = "orders", ignore = true)
     ClientDto entityToDto(Client client);
-    @Mapping(target = "orders", ignore = true)
+
     List<Client> dtoToEntity(List<ClientDto> clientDtos);
-    @Mapping(target = "orders", ignore = true)
+
     List<ClientDto> entityToDto(List<Client> clients);
 }

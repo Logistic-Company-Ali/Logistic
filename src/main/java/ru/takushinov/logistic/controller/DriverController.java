@@ -8,31 +8,31 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ru.takushinov.logistic.dto.UserDto;
-import ru.takushinov.logistic.mapper.UserMapper;
-import ru.takushinov.logistic.service.UserService;
+import ru.takushinov.logistic.dto.DriverDto;
+import ru.takushinov.logistic.mapper.DriverMapper;
+import ru.takushinov.logistic.service.DriverService;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/users")
+@RequestMapping("/api/v1/drivers")
 @RequiredArgsConstructor
-public class UserController {
-    private final UserService userService;
-    private final UserMapper userMapper;
+public class DriverController {
+    private final DriverService driverService;
+    private final DriverMapper driverMapper;
     @PreAuthorize("hasAuthority('ROLE_OPER') or hasAuthority('ROLE_ADMIN')")
     @GetMapping()
-    public List<UserDto> getAll() {
-        return userMapper.entityToDto(userService.getAll());
+    public List<DriverDto> getAll() {
+        return driverMapper.entityToDto(driverService.getAll());
     }
     @PreAuthorize("hasAuthority('ROLE_OPER') or hasAuthority('ROLE_ADMIN')")
-    @GetMapping("/{username}")
-    public UserDto getUserByUsername(@PathVariable String username) {
-        return userMapper.entityToDto(userService.getUserByUsername(username));
+    @GetMapping("/{id}")
+    public DriverDto getDriverById(@PathVariable Long id) {
+        return driverMapper.entityToDto(driverService.getDriverById(id));
     }
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @PostMapping
-    public UserDto save(@RequestBody UserDto userDto) {
-       return userMapper.entityToDto(userService.save(userMapper.dtoToEntity(userDto)));
+    public DriverDto save(@RequestBody DriverDto DriverDto) {
+        return driverMapper.entityToDto(driverService.save(driverMapper.dtoToEntity(DriverDto)));
     }
 }
