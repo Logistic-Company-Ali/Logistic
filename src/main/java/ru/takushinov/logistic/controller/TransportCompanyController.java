@@ -20,11 +20,12 @@ import java.util.List;
 public class TransportCompanyController {
     private final TransportCompanyService transportCompanyService;
     private final TransportCompanyMapper transportCompanyMapper;
-
+    @PreAuthorize("hasAuthority('ROLE_OPER') or hasAuthority('ROLE_ADMIN')")
     @GetMapping()
     public List<TransportCompanyDto> getAll() {
         return transportCompanyMapper.entityToDto(transportCompanyService.getAll());
     }
+    @PreAuthorize("hasAuthority('ROLE_OPER') or hasAuthority('ROLE_ADMIN')")
     @GetMapping("/{id}")
     public TransportCompanyDto getCompanyByName(@PathVariable long id) {
 

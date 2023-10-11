@@ -1,7 +1,10 @@
 package ru.takushinov.logistic.service;
 
 import org.springframework.stereotype.Service;
+import ru.takushinov.logistic.entitie.Driver;
 import ru.takushinov.logistic.repository.DriverRepository;
+
+import java.util.List;
 
 @Service
 public class DriverService {
@@ -12,4 +15,15 @@ public class DriverService {
     }
 
 
+    public List<Driver> getAll() {
+        return driverRepository.findAll();
+    }
+
+    public Driver getDriverById(Long id) {
+        return driverRepository.findById(id).get();
+    }
+
+    public Driver save(Driver driver) {
+        return driverRepository.save(driver);
+    }
 }

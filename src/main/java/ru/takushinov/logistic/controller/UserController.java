@@ -20,14 +20,14 @@ import java.util.List;
 public class UserController {
     private final UserService userService;
     private final UserMapper userMapper;
-
+    @PreAuthorize("hasAuthority('ROLE_OPER') or hasAuthority('ROLE_ADMIN')")
     @GetMapping()
     public List<UserDto> getAll() {
         return userMapper.entityToDto(userService.getAll());
     }
+    @PreAuthorize("hasAuthority('ROLE_OPER') or hasAuthority('ROLE_ADMIN')")
     @GetMapping("/{username}")
     public UserDto getUserByUsername(@PathVariable String username) {
-
         return userMapper.entityToDto(userService.getUserByUsername(username));
     }
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")

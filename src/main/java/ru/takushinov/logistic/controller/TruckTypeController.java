@@ -20,14 +20,14 @@ import java.util.List;
 public class TruckTypeController {
     private final TruckTypeService truckTypeService;
     private final TruckTypeMapper truckTypeMapper;
-
+    @PreAuthorize("hasAuthority('ROLE_OPER') or hasAuthority('ROLE_ADMIN')")
     @GetMapping()
     public List<TruckTypeDto> getAll() {
         return truckTypeMapper.entityToDto(truckTypeService.getAll());
     }
+    @PreAuthorize("hasAuthority('ROLE_OPER') or hasAuthority('ROLE_ADMIN')")
     @GetMapping("/{truckTypeName}")
     public TruckTypeDto getTruckTypeByName(@PathVariable String truckTypeName) {
-
         return truckTypeMapper.entityToDto(truckTypeService.getTruckTypeByName(truckTypeName));
     }
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")

@@ -20,14 +20,14 @@ import java.util.List;
 public class ClientController {
     private final ClientService clientService;
     private final ClientMapper clientMapper;
-
+    @PreAuthorize("hasAuthority('ROLE_OPER') or hasAuthority('ROLE_ADMIN')")
     @GetMapping()
     public List<ClientDto> getAll() {
         return clientMapper.entityToDto(clientService.getAll());
     }
+    @PreAuthorize("hasAuthority('ROLE_OPER') or hasAuthority('ROLE_ADMIN')")
     @GetMapping("/{id}")
     public ClientDto getClientById(@PathVariable Long id) {
-
         return clientMapper.entityToDto(clientService.getClientById(id));
     }
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
