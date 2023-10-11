@@ -13,8 +13,8 @@ public interface TransportCompanyMapper {
     TransportCompany dtoToEntity(TransportCompanyDto transportCompanyDtoDto);
     @Mapping(target = "trucks", ignore = true)
     TransportCompanyDto entityToDto(TransportCompany transportCompanyDto);
-    @Mapping(target = "trucks", ignore = true)
+
     List<TransportCompany> dtoToEntity(List<TransportCompanyDto> transportCompanyDtoDtos);
-    @Mapping(target = "trucks", ignore = true)
+
     List<TransportCompanyDto> entityToDto(List<TransportCompany> transportCompanyDtos);
 }

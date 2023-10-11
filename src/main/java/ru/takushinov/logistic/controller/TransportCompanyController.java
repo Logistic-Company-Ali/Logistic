@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.takushinov.logistic.dto.TransportCompanyDto;
-import ru.takushinov.logistic.dto.TruckTypeDto;
 import ru.takushinov.logistic.mapper.TransportCompanyMapper;
 import ru.takushinov.logistic.service.TransportCompanyService;
 
@@ -29,7 +28,7 @@ public class TransportCompanyController {
     @GetMapping("/{id}")
     public TransportCompanyDto getCompanyByName(@PathVariable long id) {
 
-        return transportCompanyMapper.entityToDto(transportCompanyService.getCompanyByName(id));
+        return transportCompanyMapper.entityToDto(transportCompanyService.getCompanyById(id));
     }
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @PostMapping
