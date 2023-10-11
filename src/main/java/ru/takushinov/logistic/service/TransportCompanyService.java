@@ -18,7 +18,7 @@ public class TransportCompanyService {
         return transportCompanyRepository.findAll();
     }
 
-    public TransportCompany getCompanyByName(Long id) {
+    public TransportCompany getCompanyById(Long id) {
         return transportCompanyRepository.findById(id).get();
     }
 
