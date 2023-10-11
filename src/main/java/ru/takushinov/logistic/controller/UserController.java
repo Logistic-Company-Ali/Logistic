@@ -17,7 +17,7 @@ public class UserController {
     private final UserMapper userMapper;
 
     @GetMapping()
-    public List<UserDto> getAllUsers() {
+    public List<UserDto> getAll() {
         return userMapper.entityToDto(userService.getAll());
     }
     @GetMapping("/{username}")
@@ -27,7 +27,7 @@ public class UserController {
     }
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @PostMapping
-    public UserDto saveUser(@RequestBody UserDto userDto) {
+    public UserDto save(@RequestBody UserDto userDto) {
        return userMapper.entityToDto(userService.save(userMapper.dtoToEntity(userDto)));
     }
 }

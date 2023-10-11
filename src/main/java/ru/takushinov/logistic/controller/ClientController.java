@@ -25,7 +25,7 @@ public class ClientController {
     private final ClientMapper clientMapper;
 
     @GetMapping()
-    public List<ClientDto> getAllClients() {
+    public List<ClientDto> getAll() {
         return clientMapper.entityToDto(clientService.getAll());
     }
     @GetMapping("/{id}")
