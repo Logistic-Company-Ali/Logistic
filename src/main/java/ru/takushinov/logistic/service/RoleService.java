@@ -9,7 +9,6 @@ import ru.takushinov.logistic.repository.RoleRepository;
 @RequiredArgsConstructor
 public class RoleService {
     private final RoleRepository roleRepository;
-
     public Role getUserRole() {
         return roleRepository.findByRole("ROLE_USER").get();
     }

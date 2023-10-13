@@ -34,12 +34,12 @@ public class ClientController {
     }
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @PostMapping
-    public ClientDto save(@RequestBody ClientDto ClientDto) {
-        return clientMapper.entityToDto(clientService.save(clientMapper.dtoToEntity(ClientDto)));
+    public ClientDto save(@RequestBody ClientDto clientDto) {
+        return clientMapper.entityToDto(clientService.save(clientMapper.dtoToEntity(clientDto)));
     }
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @DeleteMapping
-    public void delete(@RequestBody ClientDto ClientDto) {
-        clientService.delete(clientMapper.dtoToEntity(ClientDto));
+    public void delete(@RequestBody ClientDto clientDto) {
+        clientService.delete(clientMapper.dtoToEntity(clientDto));
     }
 }

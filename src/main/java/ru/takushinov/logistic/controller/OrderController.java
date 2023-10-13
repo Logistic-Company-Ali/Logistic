@@ -2,12 +2,14 @@ package ru.takushinov.logistic.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import ru.takushinov.logistic.dto.ClientDto;
 import ru.takushinov.logistic.dto.OrderDto;
 import ru.takushinov.logistic.mapper.OrderMapper;
 import ru.takushinov.logistic.service.OrderService;
@@ -34,5 +36,10 @@ public class OrderController {
     @PostMapping
     public OrderDto save(@RequestBody OrderDto orderDto) {
         return orderMapper.entityToDto(orderService.save(orderMapper.dtoToEntity(orderDto)));
+    }
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @DeleteMapping
+    public void delete(@RequestBody OrderDto orderDto) {
+        orderService.delete(orderMapper.dtoToEntity(orderDto));
     }
 }
