@@ -28,7 +28,7 @@ public class Order {
     @Column(name = "cargo_volume")
     private Integer cargoVolume;
     @Column(name = "address_loading")
-    private Integer addressLoading;
+    private String addressLoading;
     @Column(name = "address_unloading")
     private String addressUnloading;
     @Column(name = "note")

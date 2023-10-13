@@ -14,6 +14,4 @@ public class TruckTypeDto {
     private String type;
     private Integer tariffByKm;
     private Integer tariffByHour;
-    private List<TruckDto> trucks;
-
 }

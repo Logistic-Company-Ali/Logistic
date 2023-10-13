@@ -9,14 +9,10 @@ import ru.takushinov.logistic.entitie.User;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring")//, uses = TruckMapper.class)
 public interface TruckTypeMapper {
-    @Mapping(target = "trucks", ignore = true)
     TruckType dtoToEntity(TruckTypeDto truckTypeDto);
-    @Mapping(target = "trucks", ignore = true)
     TruckTypeDto entityToDto(TruckType truckType);
-
     List<TruckType> dtoToEntity(List<TruckTypeDto> truckTypeDtos);
-
     List<TruckTypeDto> entityToDto(List<TruckType> truckTypes);
 }

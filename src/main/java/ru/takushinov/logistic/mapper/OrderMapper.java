@@ -8,7 +8,7 @@ import ru.takushinov.logistic.entitie.Order;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = {TruckMapper.class, ClientMapper.class})
 public interface OrderMapper {
     Order dtoToEntity(OrderDto orderDto);
     OrderDto entityToDto(Order order);

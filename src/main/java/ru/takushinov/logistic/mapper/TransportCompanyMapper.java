@@ -7,14 +7,10 @@ import ru.takushinov.logistic.entitie.TransportCompany;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring")//, uses = TruckMapper.class)
 public interface TransportCompanyMapper {
-    @Mapping(target = "trucks", ignore = true)
     TransportCompany dtoToEntity(TransportCompanyDto transportCompanyDtoDto);
-    @Mapping(target = "trucks", ignore = true)
     TransportCompanyDto entityToDto(TransportCompany transportCompanyDto);
-
     List<TransportCompany> dtoToEntity(List<TransportCompanyDto> transportCompanyDtoDtos);
-
     List<TransportCompanyDto> entityToDto(List<TransportCompany> transportCompanyDtos);
 }
