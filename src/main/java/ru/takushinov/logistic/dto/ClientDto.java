@@ -18,5 +18,4 @@ public class ClientDto {
     private String kpp;
     private String fioRuk;
     private String address;
-    private List<OrderDto> orders;
 }

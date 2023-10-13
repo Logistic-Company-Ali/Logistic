@@ -18,7 +18,5 @@ public class TruckDto {
     private Integer width;
     private TransportCompanyDto transportCompany;
     private TruckTypeDto truckType;
-    private List<OrderDto> orders;
-    private DriverDto driver;
 
 }

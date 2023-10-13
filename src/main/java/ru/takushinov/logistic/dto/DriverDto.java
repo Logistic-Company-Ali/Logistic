@@ -13,5 +13,4 @@ public class DriverDto {
     private String name;
     private String patronymic;
     private TruckDto truck;
-
 }
