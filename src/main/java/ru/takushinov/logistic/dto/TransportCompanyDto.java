@@ -18,5 +18,4 @@ public class TransportCompanyDto {
     private String kpp;
     private String fioRuk;
     private String address;
-    private List<TruckDto> trucks;
 }

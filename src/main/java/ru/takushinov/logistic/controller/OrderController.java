@@ -1,7 +1,6 @@
 package ru.takushinov.logistic.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.apache.coyote.Response;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,35 +10,36 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.takushinov.logistic.dto.ClientDto;
-import ru.takushinov.logistic.mapper.ClientMapper;
-import ru.takushinov.logistic.service.ClientService;
+import ru.takushinov.logistic.dto.OrderDto;
+import ru.takushinov.logistic.mapper.OrderMapper;
+import ru.takushinov.logistic.service.OrderService;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/clients")
+@RequestMapping("/api/v1/orders")
 @RequiredArgsConstructor
-public class ClientController {
-    private final ClientService clientService;
-    private final ClientMapper clientMapper;
+public class OrderController {
+    private final OrderService orderService;
+    private final OrderMapper orderMapper;
     @PreAuthorize("hasAuthority('ROLE_OPER') or hasAuthority('ROLE_ADMIN')")
     @GetMapping()
-    public List<ClientDto> getAll() {
-        return clientMapper.entityToDto(clientService.getAll());
+    public List<OrderDto> getAll() {
+        return orderMapper.entityToDto(orderService.getAll());
     }
     @PreAuthorize("hasAuthority('ROLE_OPER') or hasAuthority('ROLE_ADMIN')")
     @GetMapping("/{id}")
-    public ClientDto getClientById(@PathVariable Long id) {
-        return clientMapper.entityToDto(clientService.getClientById(id));
+    public OrderDto getOrderByName(@PathVariable Long id) {
+        return orderMapper.entityToDto(orderService.getOrderById(id));
     }
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @PostMapping
-    public ClientDto save(@RequestBody ClientDto clientDto) {
-        return clientMapper.entityToDto(clientService.save(clientMapper.dtoToEntity(clientDto)));
+    public OrderDto save(@RequestBody OrderDto orderDto) {
+        return orderMapper.entityToDto(orderService.save(orderMapper.dtoToEntity(orderDto)));
     }
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @DeleteMapping
-    public void delete(@RequestBody ClientDto clientDto) {
-        clientService.delete(clientMapper.dtoToEntity(clientDto));
+    public void delete(@RequestBody OrderDto orderDto) {
+        orderService.delete(orderMapper.dtoToEntity(orderDto));
     }
 }

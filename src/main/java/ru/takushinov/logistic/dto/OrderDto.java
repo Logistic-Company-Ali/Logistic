@@ -14,7 +14,7 @@ public class OrderDto {
     private String cargo;
     private Integer cargoWeight;
     private Integer cargoVolume;
-    private Integer addressLoading;
+    private String addressLoading;
     private String addressUnloading;
     private String note;
     private String status;
