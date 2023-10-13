@@ -1,7 +1,9 @@
 package ru.takushinov.logistic.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.apache.coyote.Response;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -34,5 +36,10 @@ public class ClientController {
     @PostMapping
     public ClientDto save(@RequestBody ClientDto ClientDto) {
         return clientMapper.entityToDto(clientService.save(clientMapper.dtoToEntity(ClientDto)));
+    }
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @DeleteMapping
+    public void delete(@RequestBody ClientDto ClientDto) {
+        clientService.delete(clientMapper.dtoToEntity(ClientDto));
     }
 }
