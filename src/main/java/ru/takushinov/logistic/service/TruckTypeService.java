@@ -3,6 +3,7 @@ package ru.takushinov.logistic.service;
 import org.springframework.stereotype.Service;
 import ru.takushinov.logistic.entitie.Driver;
 import ru.takushinov.logistic.entitie.TruckType;
+import ru.takushinov.logistic.exception.ResourceNotFoundException;
 import ru.takushinov.logistic.repository.TruckTypeRepository;
 
 import java.util.List;
@@ -17,7 +18,7 @@ public class TruckTypeService {
         return truckTypeRepository.findAll();
     }
     public TruckType getTruckTypeByName(String truckTypeName) {
-        return truckTypeRepository.findByType(truckTypeName).get();
+        return truckTypeRepository.findByType(truckTypeName).orElseThrow(()-> new ResourceNotFoundException("Truck type " + truckTypeName + " not found"));
     }
     public TruckType save(TruckType truckType) {
         return truckTypeRepository.save(truckType);

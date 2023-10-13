@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import ru.takushinov.logistic.entitie.Driver;
 import ru.takushinov.logistic.entitie.User;
 import ru.takushinov.logistic.entitie.Role;
+import ru.takushinov.logistic.exception.ResourceNotFoundException;
 import ru.takushinov.logistic.repository.UserRepository;
 
 import java.util.Collection;
@@ -43,7 +44,7 @@ public class UserService implements UserDetailsService {
         return userRepository.findAll();
     }
     public User getUserByUsername(String username) {
-        return userRepository.findByUsername(username).get();
+        return userRepository.findByUsername(username).orElseThrow(()-> new ResourceNotFoundException("User " + username + " not found"));
     }
     public User save(User user) {
        return userRepository.save(user);
